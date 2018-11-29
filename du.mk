@@ -6,11 +6,15 @@
 
 $(call inherit-product, device/xiaomi/dipper/device.mk)
 
-# Inherit some common AOSiP stuff.
-$(call inherit-product, vendor/aosip/config/common_full_phone.mk)
+# Include DU common configuration
+include vendor/du/config/common_full_phone.mk
+
+# Inherit from the common Open Source product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := aosip_dipper
+PRODUCT_NAME := du_dipper
 PRODUCT_DEVICE := dipper
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Mi 8
